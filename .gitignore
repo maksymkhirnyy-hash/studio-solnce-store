@@ -3,3 +3,6 @@ Thumbs.db
 *.psd
 *.ai
 *.sketch
+
+# Local Netlify folder
+.netlify
