@@ -1,0 +1,532 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #e2dbd2;
+  --text: #000000;
+  --text-secondary: #666666;
+  --border: #e5e5e5;
+  --btn-bg: #000000;
+  --btn-text: #ffffff;
+  --radius: 4px;
+  --max-width: 1370px;
+  --copy-width: 1024px;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Basis Grotesque Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ─── HEADER ─── */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  background: #fff;
+  z-index: 100;
+}
+
+.header-logo {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  color: var(--text);
+  text-transform: uppercase;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text);
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─── HERO ─── */
+
+.hero {
+  position: relative;
+  width: 100%;
+  margin-top: 0;
+}
+
+.hero-slider {
+  position: relative;
+  width: 100%;
+}
+
+.hero-slide {
+  display: none;
+  width: 100%;
+}
+
+.hero-slide.active {
+  display: block;
+}
+
+.hero-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hero-dots {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.hero-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.hero-dot.active {
+  background: #fff;
+  transform: scale(1.3);
+}
+
+.hero-copy {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  padding-left: 150px;
+  z-index: 2;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-weight: 300;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.3;
+}
+
+/* ─── COPY (text block) ─── */
+
+.copy {
+  padding: 60px 150px 60px 150px;
+}
+
+.copy-inner {
+  margin: 0;
+}
+
+.copy-heading {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+.copy-columns {
+  display: none;
+}
+
+.copy-col {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+/* ─── IMAGE PAIRS ─── */
+
+.pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  padding: 0 100px;
+  margin-bottom: 100px;
+}
+
+.pair-left,
+.pair-right {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+}
+
+.pair-left img,
+.pair-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Karagach_01 transparent PNG — на сером фоне */
+.pair-bg {
+  background: #e2dbd2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pair-float {
+  width: 65% !important;
+  height: auto !important;
+  max-height: 90%;
+  object-fit: contain !important;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15));
+}
+
+/* ─── FULL WIDTH IMAGE ─── */
+
+.full {
+  width: 100%;
+  margin-bottom: 100px;
+}
+
+.full img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ─── SHOP SECTION (Featured Designs) ─── */
+
+.shop {
+  padding: 80px 16px;
+}
+
+.shop-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.shop-heading {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  justify-content: center;
+}
+
+.shop-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.shop-card:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.shop-card-img {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #f8f8f8;
+}
+
+.shop-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.shop-card:hover .shop-card-img img {
+  transform: scale(1.03);
+}
+
+.shop-card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.shop-card-body h3 {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.shop-card-body p {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.shop-price {
+  font-size: 18px !important;
+  font-weight: 500 !important;
+  color: var(--text) !important;
+  margin-top: 4px;
+}
+
+.shop-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+  padding: 12px 28px;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: opacity 0.3s;
+}
+
+.shop-btn:hover {
+  opacity: 0.85;
+}
+
+.shop-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* ─── LANDING PAGE ─── */
+
+.landing {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 100px;
+}
+
+.landing-inner {
+  width: 100%;
+}
+
+.landing-title {
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.landing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 100px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.landing-card {
+  text-decoration: none;
+  color: var(--text);
+  display: block;
+  transition: opacity 0.3s;
+}
+
+.landing-card:hover {
+  opacity: 0.7;
+}
+
+.landing-card-img {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.landing-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.landing-card h2 {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+
+.landing-card p {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-secondary);
+}
+
+/* ─── FOOTER ─── */
+
+.footer {
+  padding: 60px 16px;
+  border-top: 1px solid var(--border);
+}
+
+.footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-brand {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-links a {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: var(--text);
+}
+
+.footer-copy {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--text-secondary);
+}
+
+/* ─── RESPONSIVE ─── */
+
+@media (max-width: 768px) {
+  .pair {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 0 30px;
+    margin-bottom: 50px;
+  }
+
+  .full {
+    margin-bottom: 50px;
+  }
+
+  .copy-columns {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .copy {
+    padding: 48px 16px;
+  }
+
+  .shop {
+    padding: 60px 16px;
+  }
+
+  .hero-dots {
+    bottom: 32px;
+  }
+
+  .hero-copy {
+    bottom: 32px;
+    padding-left: 30px;
+  }
+
+  .copy {
+    padding: 48px 30px;
+  }
+
+  .hero-title {
+    color: #fff;
+  }
+
+  .hero-subtitle {
+    color: rgba(255,255,255,0.85);
+  }
+
+  .landing {
+    padding: 60px 30px;
+  }
+
+  .landing-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .landing-title {
+    margin-bottom: 40px;
+  }
+}
+
+@media (min-width: 769px) {
+  .pair {
+    gap: 100px;
+    padding: 0 100px;
+    margin-bottom: 100px;
+  }
+
+  .full {
+    margin-bottom: 100px;
+  }
+}
